@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>081417151刘洋</title>
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript", src="Commonjs.js"></script>
+
+    <!--页内样式-->
+    <style>
+        article {
+            margin: 20px;
+        }
+
+        h3 {
+            color: red;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        h4 {
+            font-size: 14px;
+        }
+
+        article p {
+            text-indent: 2em;
+            line-height: 2em;
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+<body>
+<!--第一部分-->
+<header>
+    <span>平台风采</span>
+</header>
+
+<!--第二部分-->
+<section class="DS_second_section">
+
+    <img id="bannerImg" src="Resource/banner4.png" alt="">
+</section>
+
+<!--第三部分-->
+<article>
+    <h3 id="title"></h3>
+    <h4 id="subTitle"></h4>
+    <p id="info"></p>
+</article>
+
+    <script>
+
+        var title_content =document.getElementById("title");
+        var subTitle_content =document.getElementById("subTitle");
+        var info_content =document.getElementById("info");
+
+        var obj_title = window.localStorage.getItem("platform_title");
+        var obj_subTitle = window.localStorage.getItem("platform_subTitle");
+        var obj_info = window.localStorage.getItem("platform_info");
+
+        if (obj_title){
+            title_content.innerHTML = obj_title;
+            subTitle_content.innerHTML = obj_subTitle;
+            info_content.innerHTML = obj_info;
+
+        }else {
+
+
+            requestMethod('aboutus', "", 'get', function(returnStr){
+
+                var title_content = document.getElementById("title");
+                var subTitle_content = document.getElementById("subTitle");
+                var info_content = document.getElementById("info");
+
+                window.localStorage.setItem("platform_title",returnStr.title);
+                window.localStorage.setItem("platform_subTitle",returnStr.subTitle);
+                window.localStorage.setItem("platform_info",returnStr.info);
+
+                title_content.innerHTML = returnStr.title;
+                subTitle_content.innerHTML = returnStr.subTitle;
+                info_content.innerHTML = returnStr.info;
+
+            });
+
+            // //第一步 传建网络请求对象
+            // var xhr = new XMLHttpRequest();
+            //
+            // //第二步 与服务端建立链接（get post）请求方式
+            // xhr.open('get','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/aboutus');
+            // //设置请求头
+            // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            //
+            // //第三步 向服务器发送请求（传参）
+            //
+            // xhr.send();
+            //
+            // //第四部 接收服务器返回的数据
+            // xhr.onreadystatechange = function () {
+            //     //xhr.readyState == 4  数据请求完成
+            //     //xhr.status == 200  数据成功返回
+            //     if(xhr.readyState == 4 && xhr.status == 200){
+            //         //服务端返回的数据
+            //         var responseData = JSON.parse(xhr.responseText);
+            //         var obj = responseData.data;
+            //
+            //         window.localStorage.setItem("platform_title",obj.title);
+            //         window.localStorage.setItem("platform_subTitle",obj.subTitle);
+            //         window.localStorage.setItem("platform_info",obj.info);
+            //
+            //
+            //         title_content.innerHTML = obj.title;
+            //         subTitle_content.innerHTML = obj.subTitle;
+            //         info_content.innerHTML = obj.info;
+            //
+            //     }
+            //
+            // }
+
+
+        }
+
+
+
+</script>
+
+
+<!--第四部分-->
+<footer>
+
+    <a href="DropletService.html" > <img src="Resource/nav10.png" alt=""> <span > 小滴服务</span> </a>
+    <a href="BusinessProject.html" > <img src="Resource/nav20.png" alt=""> <span>企业项目</span> </a>
+    <a href="ServiceProcess.html" > <img src="Resource/nav30.png" alt=""> <span>服务流程</span> </a>
+    <a href="PlatfromMien.html" > <img src="Resource/nav41.png" alt=""> <span style="color: red">平台风采</span> </a>
+    <a href="MyDroplet.html" > <img src="Resource/nav50.png" alt=""> <span>我的小滴</span> </a>
+
+</footer>
+
+
+</body>
+</html>

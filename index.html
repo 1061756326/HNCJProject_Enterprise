@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>081417151刘洋</title>
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript", src="Commonjs.js"></script>
+
+    <style>
+        .L_second_div {
+            text-align: center;
+        }
+
+        .L_head_img {
+            margin-top: 50px;
+        }
+
+        .L_form_inner_div {
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background: white;
+            margin-top: 30px;
+            height: 100px;
+
+        }
+
+        .L_form_inner_div div span {
+            padding-left: 15px;
+            font-size: 20px;
+            line-height: 50px
+        }
+
+        .L_form_inner_div div {
+            height: 50px;
+            border-bottom: 1px solid #dddddd
+        }
+
+        .L_login_div {
+            height: 50px;
+            background: rgb(32, 90, 163);
+            width: 90%;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center
+        }
+
+        .L_login_btn {
+            line-height: 50px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            width: 100%
+        }
+
+        input {
+            outline: medium;
+            background-color: transparent;
+            border: 0
+        }
+
+    </style>
+
+
+
+</head>
+<body style="background: rgb(241, 241, 244)">
+
+<header>
+    <span>登录</span>
+</header>
+
+<div class="L_second_div">
+    <img class="L_head_img" src="Resource/head.png" alt="">
+</div>
+
+<form action="">
+    <div class="L_form_div">
+        <div class="L_form_inner_div">
+            <div>
+                <span>账号名:</span>
+                <input id="i_account" type="text" ><br>
+            </div>
+            <div>
+                <span>密码:</span>
+                <input  id="i_pwd" type="password"><br>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="L_login_div">
+            <input class="L_login_btn" type="button" value="登录" id="i_btn">
+        </div>
+    </div>
+
+</form>
+
+    <script>
+
+        // /*普通定义函数的方式*/
+        // function sum(a,b) {
+        //     var c = a + b;
+        //     alert("hhhhhh");
+        //     return c;
+        // }
+        //
+        // /*变量名定义函数的方式*/
+        // var sum1 = function (a,b) {
+        //     var c = a + b;
+        //     alert("LLLLLLL");
+        //     return c;
+        // };
+
+        var btn =document.getElementById("i_btn");
+        btn.onclick = function ( ) {
+            var userName = encodeURIComponent(document.getElementById("i_account").value);
+            var pwd = encodeURIComponent(document.getElementById("i_pwd").value);
+
+
+            var par2 = "username=" + userName + "&pwd=" + pwd;
+
+            requestMethod('login', par2, 'post', function (returnStr) {
+                // //第一步 传建网络请求对象
+                // var xhr = new XMLHttpRequest();
+                //
+                // //第二步 与服务端建立链接（get post）请求方式
+                // xhr.open('post','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/login');
+                // //设置请求头
+                // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                //
+                // //第三步 向服务器发送请求（传参）
+                // var par = "username=" + userName + "&pwd=" + pwd;
+                // xhr.send(par);
+                //
+                // //第四部 接收服务器返回的数据
+                // xhr.onreadystatechange = function () {
+                //     //xhr.readyState == 4  数据请求完成
+                //     //xhr.status == 200  数据成功返回
+                //     if(xhr.readyState == 4 && xhr.status == 200){
+                //         //服务端返回的数据
+                //         var responseData = JSON.parse(xhr.responseText);
+                //         var str = responseData.data;
+                if (returnStr == "登录成功") {
+                    location.href = "DropletService.html"
+                } else {
+                    alert(returnStr);
+                }
+                // }
+                // }
+            });
+        }
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>
