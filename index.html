@@ -1,165 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>081417151刘洋</title>
-    <link rel="short icon" href="Resource/icon.png">
-    <link rel="stylesheet" href="ExternalStyle.css">
-    <script type="text/javascript", src="Commonjs.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>河南工业大学访客预约服务平台</title>
+    <link href="./css/main.css?v=1.0.2" rel="stylesheet" type="text/css" />
+    <link href="./css/public.css?v=2" rel="stylesheet" /><link href="./css/express.css" rel="stylesheet" /><link href="./css/cost.css" rel="stylesheet" />
 
     <style>
-        .L_second_div {
-            text-align: center;
+        .cost-pay-now {
+            margin-top: 6px;
+            margin-top: 10px;
+            height: 28px;
+            line-height: 28px;
         }
-
-        .L_head_img {
-            margin-top: 50px;
+        select.in-select {
+            width: 50%;
         }
-
-        .L_form_inner_div {
-            width: 90%;
-            margin: 0 auto;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
-            background: white;
-            margin-top: 30px;
-            height: 100px;
-
+        .layui-layer-setwin a {
+            width: 38px;
+            height: 38px;
         }
-
-        .L_form_inner_div div span {
-            padding-left: 15px;
-            font-size: 20px;
-            line-height: 50px
+        .box {
+            margin: 6px;
         }
-
-        .L_form_inner_div div {
-            height: 50px;
-            border-bottom: 1px solid #dddddd
+        .android-ics.light .dw {
+            z-index: 99999999999999999 !important;
         }
-
-        .L_login_div {
-            height: 50px;
-            background: rgb(32, 90, 163);
-            width: 90%;
-            border-radius: 10px;
-            margin: 20px auto;
-            text-align: center
+        body {
+            font-size: 15px;
         }
-
-        .L_login_btn {
-            line-height: 50px;
-            height: 50px;
-            color: white;
-            font-size: 20px;
-            width: 100%
+        .form-detail {
+            font-size: 15px;
         }
-
-        input {
-            outline: medium;
-            background-color: transparent;
-            border: 0
+        input[type="text"].form-input {
+            font-size: 15px;
         }
-
+        body {
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+            -moz-text-size-adjust: 100% !important;
+        }
     </style>
 
-
-
-</head>
-<body style="background: rgb(241, 241, 244)">
-
-<header>
-    <span>登录</span>
-</header>
-
-<div class="L_second_div">
-    <img class="L_head_img" src="Resource/head.png" alt="">
-</div>
-
-<form action="">
-    <div class="L_form_div">
-        <div class="L_form_inner_div">
-            <div>
-                <span>账号名:</span>
-                <input id="i_account" type="text" ><br>
-            </div>
-            <div>
-                <span>密码:</span>
-                <input  id="i_pwd" type="password"><br>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="L_login_div">
-            <input class="L_login_btn" type="button" value="登录" id="i_btn">
-        </div>
-    </div>
-
-</form>
-
-    <script>
-
-        // /*普通定义函数的方式*/
-        // function sum(a,b) {
-        //     var c = a + b;
-        //     alert("hhhhhh");
-        //     return c;
-        // }
-        //
-        // /*变量名定义函数的方式*/
-        // var sum1 = function (a,b) {
-        //     var c = a + b;
-        //     alert("LLLLLLL");
-        //     return c;
-        // };
-
-        var btn =document.getElementById("i_btn");
-        btn.onclick = function ( ) {
-            var userName = encodeURIComponent(document.getElementById("i_account").value);
-            var pwd = encodeURIComponent(document.getElementById("i_pwd").value);
-
-
-            var par2 = "username=" + userName + "&pwd=" + pwd;
-
-            requestMethod('login', par2, 'post', function (returnStr) {
-                // //第一步 传建网络请求对象
-                // var xhr = new XMLHttpRequest();
-                //
-                // //第二步 与服务端建立链接（get post）请求方式
-                // xhr.open('post','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/login');
-                // //设置请求头
-                // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                //
-                // //第三步 向服务器发送请求（传参）
-                // var par = "username=" + userName + "&pwd=" + pwd;
-                // xhr.send(par);
-                //
-                // //第四部 接收服务器返回的数据
-                // xhr.onreadystatechange = function () {
-                //     //xhr.readyState == 4  数据请求完成
-                //     //xhr.status == 200  数据成功返回
-                //     if(xhr.readyState == 4 && xhr.status == 200){
-                //         //服务端返回的数据
-                //         var responseData = JSON.parse(xhr.responseText);
-                //         var str = responseData.data;
-                if (returnStr == "登录成功") {
-                    location.href = "DropletService.html"
-                } else {
-                    alert(returnStr);
-                }
-                // }
-                // }
-            });
-        }
-
-
+    <script type="text/javascript">
+        (function () {
+            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                handleFontSize();
+            } else {
+                document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+            }
+            function handleFontSize() {
+                WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                WeixinJSBridge.on('menu:setfont', function () {
+                    WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                });
+            }
+        })();
     </script>
+</head>
+<body>
+    <form name="Form1" method="post" action="./YouKe_YuYue_List_ByFK.aspx" id="Form1">
+        <div>
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="I994BRrAuJBf3OlaHCqQkcwciGOGt5X5uapo7CjUFAutTigArXjaPNMVyrHjZbHwkIvT3itK7cQpPAKstGkeEd8bNeDqAMv1w9Ki77QXjiA=" />
+        </div>
+
+        <div>
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="711F4212" />
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="yxgS6zyEYnNVQj707EjwJfgjyB11fWk7wpklSWzttBieXd28uK+Xf3aR9KLbric4RxhBQAD5cg8bf9lDPGlWy6dWrDfgxUY2vuw4EFh39wNOuE13gsUdUA5qPF09bgKwJVhW1J+d718HZVCaFevwOECYKfZbfJ4CMldQ+jCjQ8Cllme+ebo1ljsvAqQAe2LiTNfNht/nY/fG/E5Je33rrfdKJSOw0Nu20Ow8tp/7WPc=" />
+        </div>
+
+        <!--header start-->
+        <div class="w100 header-fixed back-header" style="background: #4772F7;">
+            <a class="pull-left i-back" href="index.html">
+                <img src="./img/href-back.png" alt=""></a>
+            <div class="pull-left title" style="color: #fff;">游客预约记录</div>
+        </div>
+        <!--header end-->
+
+        <div class="w100 m-b10 form-detail post-detail" style="margin-top: 38px; height: 140px;">
+            <ul>
+                <li class="href-bg" style="height: 44px; line-height: 44px;">
+                    <label>参观日期</label>
+                    <input name="TextBox_VisitDate" type="text" id="TextBox_VisitDate" readonly="readonly" class="form-input" style="float: right; height: 44px; text-align: right; margin-right: 12px;" />
+                </li>
+
+                <li class="href-bg" style="height: 44px; line-height: 44px;">
+                    <label>审批状态</label>
+                    <select name="DropDownList_AppState" id="DropDownList_AppState" class="pull-right in-select" style="height: 44px;">
+                        <option selected="selected" value=""></option>
+                        <option value="待审批">待审批</option>
+                        <option value="审批通过">审批通过</option>
+                    </select>
+                </li>
+            </ul>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 25%;"></td>
+                    <td style="width: 25%;">
+                        <input type="submit" name="Button_Serach" value="查 询" onclick="layer.load(0);" id="Button_Serach" class="cost-pay-now" /></td>
+                    <td style="width: 25%;">
+                        <input type="submit" name="Button_Clear" value="重 置" onclick="layer.load(0);" id="Button_Clear" class="cost-pay-now" /></td>
+                    <td style="width: 25%;"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 动态生成预约记录的容器 -->
+        <div style="margin-top: 6px;" id="ordersContainer"></div>
+
+        <script src="./js/jquery-3.6.4.min.js"></script>
+        <script src="./js/layer.js"></script>
+        <script src="./js/MyJs.js?v=1.8"></script>
+        <script src="./js/mobiscroll_002.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/mobiscroll_004.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/mobiscroll.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/mobiscroll_003.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/mobiscroll_005.js" type="text/javascript" charset="utf-8"></script>
+
+        <link href="./css/mobiscroll.css" rel="stylesheet" type="text/css" />
+        <link href="./css/mobiscroll_002.css" rel="stylesheet" type="text/css" />
+        <link href="./css/mobiscroll_003.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript">
+            // 初始化本地存储
+            function initReservations() {
+                if (!localStorage.getItem('reservations')) {
+                    const initialData = [
+                        {
+                            id: '250302130741145969b45d056376',
+                            submitTime: '2025-03-02 13:07:41',
+                            visitDate: '2025-03-02',
+                            status: '审批通过'
+                        },
+                        {
+                            id: '250111121100368d34b04418d26',
+                            submitTime: '2025-01-11 12:11:00',
+                            visitDate: '2025-01-11',
+                            status: '审批通过'
+                        },
+                        {
+                            id: '25010113540359241f19f4ba95fd',
+                            submitTime: '2025-01-01 13:54:03',
+                            visitDate: '2025-01-01',
+                            status: '审批通过'
+                        }
+                    ];
+                    localStorage.setItem('reservations', JSON.stringify(initialData));
+                }
+            }
+
+            // 动态生成预约记录
+            function renderOrders() {
+                const data = JSON.parse(localStorage.getItem('reservations'));
+                const container = $('#ordersContainer');
+                container.empty();
+
+                data.forEach(item => {
+                    const orderHtml = `
+                        <div class="box orders" id="order-${item.id}">
+                            <a href="YouKe_YuYue_Info.aspx?id=${item.id}" style="color: #555;">
+                                <time style="text-align: left;">提交时间：${item.submitTime}</time>
+                            </a>
+                            <a href="YouKe_YuYue_Info.aspx?id=${item.id}" style="color: #555;">
+                                <div class="odnr">
+                                    <span>参观日期：</span>  <h1 style="display: inline;">${item.visitDate}</h1>
+                                </div>
+                            </a>
+                            <div class="odnr">
+                                状态：
+                                <strong style="color: ${item.status === '审批通过' ? 'green' : 'red'};">${item.status}</strong>
+                            </div>
+                            <!--<div class="odcz">
+                                <a href="./xqy.html" class="btn">查看</a>
+                                <a href="#" class="btn" onclick="return editYuYue('${item.id}', '${item.submitTime}', '${item.visitDate}', '${item.status}')">&nbsp;取消预约&nbsp;</a>
+                            </div>
+
+                             在动态生成预约记录的代码块中，修改查看按钮的链接 -->
+                            <div class="odcz">
+                                <a href="xqy1.html?visitDate=${item.visitDate}&submitTime=${encodeURIComponent(item.submitTime)}" class="btn">查看</a>
+                                <a href="#" class="btn" onclick="return editYuYue('${item.id}', '${item.submitTime}', '${item.visitDate}', '${item.status}')">&nbsp;取消预约&nbsp;</a>
+                            </div>
 
 
 
 
 
+                        </div>
+                    `;
+                    container.append(orderHtml);
+                });
+            }
+
+            // 编辑预约函数
+            function editYuYue(id, submitTime, visitDate, status) {
+                layer.open({
+                    type: 1,
+                    title: '编辑预约',
+                    zIndex:1,
+                    content: '<div style="padding: 20px;">' +
+                        '<div style="margin-bottom: 10px;">' +
+                        '<label>提交时间：</label>' +
+                        '<input type="text" id="editSubmitTime" value="' + submitTime + '" class="form-input" style="width: 100%;" />' +
+                        '</div>' +
+                        '<div style="margin-bottom: 10px;">' +
+                        '<label>参观日期：</label>' +
+                        '<input type="text" id="editVisitDate" value="' + visitDate + '" class="form-input" style="width: 100%;" />' +
+                        '</div>' +
+                        '<div style="margin-bottom: 10px;">' +
+                        '<label>审批状态：</label>' +
+                        '<select id="editAppState" class="form-input" style="width: 100%;">' +
+                        '<option value="待审批"' + (status === '待审批' ? ' selected' : '') + '>待审批</option>' +
+                        '<option value="审批通过"' + (status === '审批通过' ? ' selected' : '') + '>审批通过</option>' +
+                        '</select>' +
+                        '</div>' +
+                        '</div>',
+                    btn: ['保存', '取消'],
+                    yes: function (index) {
+                        const newData = {
+                            id: id,
+                            submitTime: $('#editSubmitTime').val(),
+                            visitDate: $('#editVisitDate').val(),
+                            status: $('#editAppState').val()
+                        };
+
+                        // 更新本地存储
+                        const reservations = JSON.parse(localStorage.getItem('reservations'));
+                        const indexToUpdate = reservations.findIndex(item => item.id === id);
+                        reservations[indexToUpdate] = newData;
+                        localStorage.setItem('reservations', JSON.stringify(reservations));
+
+                        // 重新渲染页面
+                        renderOrders();
+                        layer.msg('修改已保存', { icon: 1 });
+                        layer.close(index);
+                    },
+                    btn2: function (index) {
+                        layer.close(index);
+                    }
+                });
+
+                // 初始化日期选择器
+                const currYear = (new Date()).getFullYear();
+                const opt = {
+                    date: { preset: 'date' },
+                    datetime: { preset: 'datetime' },
+                    default: {
+                        theme: 'android-ics light',
+                        display: 'modal',
+                        mode: 'scroller',
+                        dateFormat: 'yyyy-mm-dd',
+                        lang: 'zh',
+                        showNow: true,
+                        nowText: "今天",
+                        startYear: currYear,
+                        endYear: currYear + 10
+                    }
+                };
+                $("#editSubmitTime").mobiscroll($.extend(opt.datetime, opt.default));
+                $("#editVisitDate").mobiscroll($.extend(opt.date, opt.default));
+
+                return false;
+            }
+
+            // 页面初始化
+            $(document).ready(function() {
+                initReservations();
+                renderOrders();
+                
+                // 初始化日期选择器
+                const currYear = (new Date()).getFullYear();
+                const opt = {
+                    date: { preset: 'date' },
+                    default: {
+                        theme: 'android-ics light',
+                        display: 'modal',
+                        mode: 'scroller',
+                        dateFormat: 'yyyy-mm-dd',
+                        lang: 'zh',
+                        showNow: true,
+                        nowText: "今天",
+                        startYear: currYear,
+                        endYear: currYear + 10
+                    }
+                };
+                $("#TextBox_VisitDate").mobiscroll($.extend(opt.date, opt.default));
+            });
+        </script>
+    </form>
 </body>
 </html>
